@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+        <TextView
+                android:id="@+id/textSpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Choose cellular automata rules" />
+        <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textSpinner" />
+        <TextView
+                android:id="@+id/textLives"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/spinner"
+                android:text="Number of neighbours when cell survives" />
+        <CheckBox
+                android:id="@+id/checkBoxLives0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textLives"
+                android:text="0"
+                android:onClick="checkBoxClick" />
+        <CheckBox
+                android:id="@+id/checkBoxLives1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/checkBoxLives0"
+                android:layout_below="@id/textLives"
+                android:text="1"
+                android:onClick="checkBoxClick" />
+        <CheckBox
+                android:id="@+id/checkBoxLives2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/checkBoxLives1"
+                android:layout_below="@id/textLives"
+                android:text="2"
+                android:onClick="checkBoxClick" />
+        <CheckBox
+                android:id="@+id/checkBoxLives3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/checkBoxLives2"
+                android:layout_below="@id/textLives"
+                android:text="3"
+                android:onClick="checkBoxClick" />
+        <CheckBox
+                android:id="@+id/checkBoxLives4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/checkBoxLives3"
+                android:layout_below="@id/textLives"
+                android:text="4"
+                android:onClick="checkBoxClick" />
+        <CheckBox
+                android:id="@+id/checkBoxLives5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/checkBoxLives0"
+                android:text="5"
+                android:onClick="checkBoxClick" />
+        <CheckBox
+                android:id="@+id/checkBoxLives6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/checkBoxLives5"
+                android:layout_below="@id/checkBoxLives0"
+                android:text="6"
+                android:onClick="checkBoxClick" />
+        <CheckBox
+                android:id="@+id/checkBoxLives7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/checkBoxLives6"
+                android:layout_below="@id/checkBoxLives0"
+                android:text="7"
+                android:onClick="checkBoxClick" />
+        <CheckBox
+                android:id="@+id/checkBoxLives8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/checkBoxLives7"
+                android:layout_below="@id/checkBoxLives0"
+                android:text="8"
+                android:onClick="checkBoxClick" />
+        <TextView
+                android:id="@+id/textBorn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Number of neighbours when cell is born"
+                android:layout_below="@id/checkBoxLives5" />
+        <CheckBox
+                android:id="@+id/checkBoxBorn0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textBorn"
+                android:text="0"
+                android:onClick="checkBoxClick" />
+        <CheckBox
+                android:id="@+id/checkBoxBorn1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textBorn"
+                android:layout_toRightOf="@id/checkBoxBorn0"
+                android:text="1"
+                android:onClick="checkBoxClick" />
+        <CheckBox
+                android:id="@+id/checkBoxBorn2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textBorn"
+                android:layout_toRightOf="@id/checkBoxBorn1"
+                android:text="2"
+                android:onClick="checkBoxClick" />
+        <CheckBox
+                android:id="@+id/checkBoxBorn3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textBorn"
+                android:layout_toRightOf="@id/checkBoxBorn2"
+                android:text="3"
+                android:onClick="checkBoxClick" />
+        <CheckBox
+                android:id="@+id/checkBoxBorn4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textBorn"
+                android:layout_toRightOf="@id/checkBoxBorn3"
+                android:text="4"
+                android:onClick="checkBoxClick" />
+        <CheckBox
+                android:id="@+id/checkBoxBorn5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/checkBoxBorn0"
+                android:text="5"
+                android:onClick="checkBoxClick" />
+        <CheckBox
+                android:id="@+id/checkBoxBorn6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/checkBoxBorn0"
+                android:layout_toRightOf="@id/checkBoxBorn5"
+                android:text="6"
+                android:onClick="checkBoxClick" />
+        <CheckBox
+                android:id="@+id/checkBoxBorn7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/checkBoxBorn0"
+                android:layout_toRightOf="@id/checkBoxBorn6"
+                android:text="7"
+                android:onClick="checkBoxClick" />
+        <CheckBox
+                android:id="@+id/checkBoxBorn8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/checkBoxBorn0"
+                android:layout_toRightOf="@id/checkBoxBorn7"
+                android:text="8"
+                android:onClick="checkBoxClick" />
+        <TextView
+                android:id="@+id/textCellSize"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/checkBoxBorn5"
+                android:text="Cell size in pixels" />
+        <SeekBar
+                android:id="@+id/seekBarCellSize"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textCellSize"
+                android:max="@integer/maxCellSize" />
+        <TextView
+                android:id="@+id/textSpeed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/seekBarCellSize"
+                android:text="Speed of calculations" />
+        <SeekBar
+                android:id="@+id/seekBarSpeed"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textSpeed"
+                android:max="@integer/maxSpeed" />
+    </RelativeLayout>
+</ScrollView>

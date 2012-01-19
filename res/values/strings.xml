@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Game Of Life</string>
+    <string name="filename">settings.life</string>
+    <string-array name="gameVariations">
+        <item>Custom</item>
+        <item>2x2</item>
+        <item>34 Life</item>
+        <item>Amoeba</item>
+        <item>Assimilation</item>
+        <item>Coagulations</item>
+        <item>Conway\'s Life</item>
+        <item>Coral</item>
+        <item>Day and Night</item>
+        <item>Diamoeba</item>
+        <item>Flakes</item>
+        <item>Gnarl</item>
+        <item>HighLife</item>
+        <item>InverseLife</item>
+        <item>Long Life</item>
+        <item>Maze</item>
+        <item>Mazectric</item>
+        <item>Move</item>
+        <item>Pseudo Life</item>
+        <item>Replicator</item>
+        <item>Seeds (2)</item>
+        <item>Serviettes</item>
+        <item>Stains</item>
+        <item>WalledCities</item>
+    </string-array>
+    <string-array name="gameRules">
+        <item>125/36</item>
+        <item>34/34</item>
+        <item>1358/357</item>
+        <item>4567/345</item>
+        <item>235678/378</item>
+        <item>23/3</item>
+        <item>45678/3</item>
+        <item>34678/3678</item>
+        <item>5678/35678</item>
+        <item>012345678/3</item>
+        <item>1/1</item>
+        <item>23/36</item>
+        <item>34678/0123478</item>
+        <item>5/345</item>
+        <item>12345/3</item>
+        <item>1234/3</item>
+        <item>245/368</item>
+        <item>238/357</item>
+        <item>1357/1357</item>
+        <item>/2</item>
+        <item>/234</item>
+        <item>235678/3678</item>
+        <item>2345/45678</item>
+    </string-array>
+</resources>
