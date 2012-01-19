@@ -17,6 +17,8 @@ import java.math.*;
 public class Game extends Activity implements View.OnClickListener {
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        //test
+
         super.onCreate(savedInstanceState);
         life = new Life(this);
         view = new GameView(this);
