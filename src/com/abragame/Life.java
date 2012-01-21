@@ -20,7 +20,7 @@ public class Life {
     private boolean[][] cells;
 
     Settings settings;
-    
+
     private Random random = new Random();
 
     Life(Activity activity) {
@@ -34,32 +34,40 @@ public class Life {
         cellWidth = screenWidth / cellSize;
         cellHeight = screenHeight / cellSize;
 
+        initCells();
+    }
+
+    void initCells() {
         cells = new boolean[cellWidth][cellHeight];
-        
-        randomize();
+        if (settings.patternSize > 0) {
+            int startX = cellWidth / 2 - settings.patternSize / 2, startY = cellHeight / 2 - settings.patternSize / 2;
+            for (int i = 0; i < settings.patternSize; i++) {
+                for (int j = 0; j < settings.patternSize; j++) {
+                    cells[startX + i][startY + j] = settings.pattern[i][j];
+                }
+            }
+        } else {
+            for (int i = 0; i < cellWidth; i++)
+                for (int j = 0; j < cellHeight; j++)
+                    cells[i][j] = random.nextBoolean();
+        }
     }
-    
-    void randomize() {
-        for (int i = 0; i < cellWidth; i++)
-            for (int j = 0; j < cellHeight; j++)
-                cells[i][j] = random.nextBoolean();
-    }
-    
-    void draw(Canvas canvas, Paint paint) {
+
+    void draw(Canvas canvas) {
+        Paint paint = new Paint();
+        canvas.drawColor(Color.BLACK);
+        paint.setColor(Color.GREEN);
         for (int x = 0; x < cellWidth; x++) {
             for (int y = 0; y < cellHeight; y++) {
                 if (cells[x][y])
-                    canvas.drawRect((float)(x * cellSize), (float)(y * cellSize),
-                                    (float)(x * cellSize + cellSize), (float)(y * cellSize + cellSize), paint);
+                    canvas.drawRect((float) (x * cellSize), (float) (y * cellSize),
+                            (float) (x * cellSize + cellSize), (float) (y * cellSize + cellSize), paint);
             }
         }
     }
-    
-    int[][] sums;
-    boolean[][] newCells;
-    
+
     void update() {
-        sums = new int[cellWidth][cellHeight];
+        int[][] sums = new int[cellWidth][cellHeight];
         for (int i = 0; i < cellWidth; i++) {
             for (int j = 0; j < cellHeight; j++) {
                 if (cells[i][j]) sums[i][j]++;
@@ -73,7 +81,7 @@ public class Life {
                 }
             }
         }
-        newCells = new boolean[cellWidth][cellHeight];
+        boolean[][] newCells = new boolean[cellWidth][cellHeight];
         for (int i = 0; i < cellWidth; i++) {
             for (int j = 0; j < cellHeight; j++) {
                 int neighbours = cells[i][j] ? -1 : 0;
@@ -84,17 +92,17 @@ public class Life {
                             int y = (j + dy + cellHeight) % cellHeight;
                             if (cells[x][y]) neighbours++;
                         }
-                } else { 
+                } else {
                     neighbours += sums[i + 1][j + 1];
                     if (i > 1) neighbours -= sums[i - 2][j + 1];
                     if (j > 1) neighbours -= sums[i + 1][j - 2];
                     if (i > 1 && j > 1) neighbours += sums[i - 2][j - 2];
                 }
                 if ((cells[i][j] && settings.cellLives[neighbours]) ||
-                    (!cells[i][j] && settings.cellBorn[neighbours]))
+                        (!cells[i][j] && settings.cellBorn[neighbours]))
                     newCells[i][j] = true;
             }
-        }      
+        }
         cells = newCells;
     }
 }

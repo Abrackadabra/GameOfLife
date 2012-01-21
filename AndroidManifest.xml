@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
       package="com.abragame"
-      android:versionCode="2"
-      android:versionName="0.1">
-    <uses-sdk android:minSdkVersion="3"/>
+      android:versionCode="3"
+      android:versionName="0.2">
+    <uses-sdk android:minSdkVersion="7"/>
     <application android:label="@string/app_name" android:icon="@drawable/icon">
         <activity android:name="Main"
                   android:label="@string/app_name">
@@ -12,13 +12,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="Game"
-                  class=".Game"
+        <activity android:name=".GameActivity"
+                  class=".GameActivity"
                   android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
                   android:noHistory="true">
         </activity>
-        <activity android:name="Preferences"
-                  class=".Preferences"
+        <activity android:name=".SettingsActivity"
+                  class=".SettingsActivity"
+                  android:noHistory="true">
+        </activity>
+        <activity android:name=".PatternActivity"
+                  class=".PatternActivity"
                   android:noHistory="true">
         </activity>
     </application>

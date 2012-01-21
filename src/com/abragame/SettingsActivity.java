@@ -14,10 +14,9 @@ import java.math.*;
 
 //1/17/12 9:56 PM
 
-public class Preferences extends Activity implements AdapterView.OnItemSelectedListener {
+public class SettingsActivity extends Activity implements AdapterView.OnItemSelectedListener {
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        Log.v("GameOfLife", "Opening preferences screen.");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.preferences);
 
@@ -33,7 +32,7 @@ public class Preferences extends Activity implements AdapterView.OnItemSelectedL
         seekBarSpeed.setOnSeekBarChangeListener(new SeekBarListener());
         seekBarSpeed.setProgress(settings.speed);
 
-        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        Spinner spinner = (Spinner) findViewById(R.id.chooseRulesSpinner);
         ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter.createFromResource(
                 this, R.array.gameVariations, android.R.layout.simple_spinner_item);
         spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -50,23 +49,22 @@ public class Preferences extends Activity implements AdapterView.OnItemSelectedL
         }
     }
 
-    Settings settings;
+    private Settings settings;
 
     public void checkBoxClick(View view) {
-        Log.v("GameOfLife", "Checkbox clicked.");
         boolean value = ((CheckBox) view).isChecked();
         for (int i = 0; i <= 8; i++) {
             if (checkBoxesLivesIds[i] == view.getId()) settings.cellLives[i] = value;
             if (checkBoxesBornIds[i] == view.getId()) settings.cellBorn[i] = value;
         }
         settings.save();
-        ((Spinner) findViewById(R.id.spinner)).setSelection(0);
+        ((Spinner) findViewById(R.id.chooseRulesSpinner)).setSelection(0);
         findFittingRule();
     }
 
     void findFittingRule() {
         String[] rules = getResources().getStringArray(R.array.gameRules);
-        for (int pos = 1; pos < ((Spinner) findViewById(R.id.spinner)).getCount(); pos++) {
+        for (int pos = 1; pos < ((Spinner) findViewById(R.id.chooseRulesSpinner)).getCount(); pos++) {
             boolean[] lives = new boolean[9];
             boolean[] born = new boolean[9];
             String rule = rules[pos - 1];
@@ -82,12 +80,11 @@ public class Preferences extends Activity implements AdapterView.OnItemSelectedL
                 ok &= born[i] == settings.cellBorn[i];
             }
             if (ok)
-                ((Spinner) findViewById(R.id.spinner)).setSelection(pos);
+                ((Spinner) findViewById(R.id.chooseRulesSpinner)).setSelection(pos);
         }
     }
 
     public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-        Log.v("GameOfLife", "Chosen " + parent.getItemAtPosition(pos).toString());
         if (pos != 0) {
             String[] rules = getResources().getStringArray(R.array.gameRules);
             settings.cellLives = new boolean[9];
@@ -106,7 +103,7 @@ public class Preferences extends Activity implements AdapterView.OnItemSelectedL
 
     public void onNothingSelected(AdapterView parent) {}
 
-    int[] checkBoxesLivesIds = {
+    private int[] checkBoxesLivesIds = {
             R.id.checkBoxLives0,
             R.id.checkBoxLives1,
             R.id.checkBoxLives2,
@@ -118,7 +115,7 @@ public class Preferences extends Activity implements AdapterView.OnItemSelectedL
             R.id.checkBoxLives8
     };
 
-    int[] checkBoxesBornIds = {
+    private int[] checkBoxesBornIds = {
             R.id.checkBoxBorn0,
             R.id.checkBoxBorn1,
             R.id.checkBoxBorn2,
@@ -130,7 +127,7 @@ public class Preferences extends Activity implements AdapterView.OnItemSelectedL
             R.id.checkBoxBorn8
     };
 
-    class SeekBarListener implements SeekBar.OnSeekBarChangeListener {
+    private class SeekBarListener implements SeekBar.OnSeekBarChangeListener {
         @Override
         public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
             if (seekBar.getId() == R.id.seekBarCellSize)

@@ -23,13 +23,16 @@ public class Settings {
     boolean[] cellBorn = {false, false, false, true, false, false, false, false, false};
     byte cellSize;
     byte speed;
+    byte patternSize;
+    boolean[][] pattern;
 
     private Activity activity;
 
     Settings(Activity activity) {
         this.activity = activity;
-        cellSize = (byte)activity.getResources().getInteger(R.integer.defaultCellSize);
-        speed = (byte)activity.getResources().getInteger(R.integer.defaultSpeed);
+        cellSize = (byte) activity.getResources().getInteger(R.integer.defaultCellSize);
+        speed = (byte) activity.getResources().getInteger(R.integer.defaultSpeed);
+        patternSize = 0;
         try {
             read();
         } catch (Exception e) {
@@ -39,7 +42,7 @@ public class Settings {
 
     void read() throws IOException {
         FileInputStream in = activity.openFileInput(activity.getString(R.string.filename));
-        byte[] buffer = new byte[100];
+        byte[] buffer = new byte[1000];
         in.read(buffer);
         for (int i = 0; i <= 8; i++) {
             cellLives[i] = buffer[i] == '1';
@@ -49,13 +52,22 @@ public class Settings {
         }
         cellSize = buffer[18];
         speed = buffer[19];
+        patternSize = buffer[20];
+        if (patternSize > 0) {
+            pattern = new boolean[patternSize][patternSize];
+            for (int i = 0; i < patternSize; i++) {
+                for (int j = 0; j < patternSize; j++) {
+                    pattern[i][j] = buffer[21 + i * patternSize + j] != 0;
+                }
+            }
+        }
         in.close();
     }
 
     void save() {
         try {
             FileOutputStream out = activity.openFileOutput(activity.getString(R.string.filename), Context.MODE_PRIVATE);
-            byte[] buffer = new byte[100];
+            byte[] buffer = new byte[1000];
             for (int i = 0; i <= 8; i++) {
                 buffer[i] = (byte) (cellLives[i] ? '1' : '0');
             }
@@ -64,6 +76,12 @@ public class Settings {
             }
             buffer[18] = cellSize;
             buffer[19] = speed;
+            buffer[20] = patternSize;
+            for (int i = 0; i < patternSize; i++) {
+                for (int j = 0; j < patternSize; j++) {
+                    buffer[21 + i * patternSize + j] = (byte) (pattern[i][j] ? 1 : 0);
+                }
+            }
             out.write(buffer);
             out.close();
         } catch (Exception e) {

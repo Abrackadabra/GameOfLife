@@ -14,11 +14,9 @@ import java.math.*;
 
 //1/13/12 3:43 AM
 
-public class Game extends Activity implements View.OnClickListener {
+public class GameActivity extends Activity implements View.OnClickListener {
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        //test
-
         super.onCreate(savedInstanceState);
         life = new Life(this);
         view = new GameView(this);
@@ -27,17 +25,17 @@ public class Game extends Activity implements View.OnClickListener {
         view.setOnClickListener(this);
     }
 
-    Life life;
+    private Life life;
 
     private GameView view = null;
 
-    Handler handler = new Handler();
+    private Handler handler = new Handler();
 
-    Runnable tick = new Runnable() {
+    private Runnable tick = new Runnable() {
         @Override
         public void run() {
-            life.update();
             view.invalidate();
+            life.update();
 
             if (life.settings.speed == getResources().getInteger(R.integer.maxSpeed))
                 handler.post(tick);
@@ -48,22 +46,17 @@ public class Game extends Activity implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
-        life.randomize();
+        life.initCells();
     }
 
     class GameView extends View {
-        private Paint paint = new Paint();
-
         public GameView(Context context) {
             super(context);
         }
 
         @Override
         protected void onDraw(Canvas canvas) {
-            canvas.drawColor(Color.BLACK);
-            paint.setColor(Color.GREEN);
-
-            life.draw(canvas, paint);
+            life.draw(canvas);
         }
     }
 

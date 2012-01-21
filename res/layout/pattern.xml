@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+    <TextView
+            android:id="@+id/patternText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Choose a pattern or create your own" />
+    <Spinner
+            android:id="@+id/patternSpinner"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/patternText"/>
+    <com.abragame.PatternEditor
+            android:id="@+id/patternEditor"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@id/patternSpinner" />
+
+
+
+
+</RelativeLayout>

@@ -5,4 +5,5 @@
     <integer name="defaultSpeed">50</integer>
     <integer name="maxCellSize">20</integer>
     <integer name="maxSpeed">100</integer>
+    <integer name="patternSize">15</integer>
 </resources>
